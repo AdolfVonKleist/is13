@@ -1,0 +1,36 @@
+#!/usr/bin/env python
+from rnnslu.load import atisfold
+from rnnslu.ATISReader import ATISReader
+
+
+if __name__ == "__main__" :
+    import argparse, sys
+
+    example = "{0} --indir train_slu_data".format (sys.argv [0])
+    parser  = argparse.ArgumentParser (description=example)
+    parser.add_argument ("--indir", "-i", help="Target directory for training "
+                         "data.", default="train_slu_data")
+    parser.add_argument ("--verbose", "-v", help="Verbose mode.",
+                         default=False, action="store_true")
+    args = parser.parse_args ()
+
+    if args.verbose :
+        for key,val in args.__dict__.iteritems () :
+            print "{0}:  {1}".format (key, val)
+
+    config = {
+        'fold': 3, # 5 folds 0,1,2,3,4
+        'lr': 0.0627142536696559,
+        'verbose': 1,
+        'decay': False, # decay on the learning rate if improvement stops
+        'win': 5, # 7 number of words in the context window
+        'bs': 7, # 9 number of backprop through time steps
+        'nhidden': 50, # number of hidden units
+        'seed': 345,
+        'emb_dimension': 50, # dimension of word embedding
+        'nepochs': 50,
+        'indir': args.indir
+        }
+
+    atis = ATISReader ()
+    atis.ProcessTrainingData (config)

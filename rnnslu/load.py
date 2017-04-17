@@ -8,7 +8,7 @@ from os.path import isfile
 
 PREFIX = os.getenv('ATISDATA', '')
 
-def download(origin):
+def download (origin):
     '''
     download the corresponding atis file
     from http://www-etud.iro.umontreal.ca/~mesnilgr/atis/
@@ -26,10 +26,10 @@ def download_dropbox():
 
 def load_dropbox(filename):
     if not isfile(filename):
-        #download('http://www-etud.iro.umontreal.ca/~mesnilgr/atis/'+filename)
         download_dropbox()
-    #f = gzip.open(filename,'rb')
+
     f = open(filename,'rb')
+    
     return f
 
 def load_udem(filename):
@@ -75,4 +75,4 @@ if __name__ == '__main__':
         print 'WORD'.rjust(wlength), 'LABEL'.rjust(wlength)
         for wx, la in zip(sw, sl): print idx2w[wx].rjust(wlength), idx2la[la].rjust(wlength)
         print '\n'+'**'*30+'\n'
-        pdb.set_trace()
+

@@ -16,7 +16,6 @@ class model(object):
         cs :: word window context size
         '''
         #assert st in ['proba', 'argmax']
-
         self.emb = theano.shared(0.2 * numpy.random.uniform(-1.0, 1.0,\
                    (ne+1, de)).astype(theano.config.floatX)) # add one for PADDING at the end
         self.Wx  = theano.shared(0.2 * numpy.random.uniform(-1.0, 1.0,\

@@ -1,0 +1,24 @@
+#!/usr/bin/env python
+import numpy, time, sys, os, random, re
+from rnnslu.jordan import model
+from rnnslu.CoNLLeval import CoNLLeval
+from rnnslu.SLUTrainer import SLUNetTrainer
+
+
+if __name__ == '__main__':
+    import argparse, sys
+
+    example = "{0} --indir train_slu_data".format (sys.argv [0])
+    parser  = argparse.ArgumentParser (description=example)
+    parser.add_argument ("--indir", "-i", help="Input directory with training "
+                         " data files.", required=True)
+    parser.add_argument ("--verbose", "-v", help="Verbose mode.",
+                         default=False, action="store_true")
+    args = parser.parse_args ()
+    
+    if args.verbose :
+        for key,val in args.__dict__.iteritems () :
+            print "{0}:  {1}".format (key, val)
+
+    trainer = SLUNetTrainer (indir=args.indir)
+    trainer.TrainSLUNet ()

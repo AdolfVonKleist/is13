@@ -1,6 +1,18 @@
-**Note:** I don't provide personal support for custom changes in the code. Only
-for the release.  For people just starting, I recommend
-[Treehouse](http://referrals.trhou.se/grgoiremesnil) for online-learning.
+Refactoring
+===========
+
+This is a refactoring of the original mesnilgr/is13 repository.  The conlleval.pl script has been ported
+to pure python, and the base refactored for arguably easier applicability to a new data.
+
+Idea is to make it a bit more straight-forward to take new training data and map it to the input text-format
+files, rather than the ATIS pickles:
+```
+$ sudo python setup.py install
+$ get_atis_data -i train_slu_data
+$ train_slu -i train_slu_data
+NEW BEST: epoch 0 valid F1 85.4118729867 best test F1 81.1594202899
+...
+```
 
 Investigation of Recurrent Neural Network Architectures and Learning Methods for Spoken Language Understanding
 ==============================================================================================================
