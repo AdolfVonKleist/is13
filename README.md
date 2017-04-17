@@ -2,7 +2,8 @@ Refactoring
 ===========
 
 This is a refactoring of the original mesnilgr/is13 repository.  The conlleval.pl script has been ported
-to pure python, and the base refactored for arguably easier applicability to a new data.
+to pure python, and the base refactored for arguably easier applicability to a new data. Also ports most major
+functionality of conlleval.pl to native python.
 
 Idea is to make it a bit more straight-forward to take new training data and map it to the input text-format
 files, rather than the ATIS pickles:
